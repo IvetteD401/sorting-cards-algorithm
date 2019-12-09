@@ -1,5 +1,15 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+body {
+  background-image: url("https://www.istockphoto.com/photo/gambling-table-gm1073028250-287189794");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 /* 
     body{
         background: #BDBDBD;

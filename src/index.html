@@ -3,18 +3,53 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hello Rigo with Vanilla.js</title>
+        <title>Vet's Amazing Card Sorting Machine</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="shortcut icon" href="./4geeks.ico"></head>
     <body>
-        <div class="container-fluid text-center">
-            <h1 class="mt-5">Hello Rigo!</h1>
-            <img src="./rigo-baby.jpg"></img>
-            <p class="alert alert-warning mt-4">If this text is <b>not</b> centered and <b>yellow</b>, you probably have an error</p>
-            <div class="fixed-bottom p-4">
-                Made with ❤️ by <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
+    <div>
+    <input type="text" class="input" id="inputs">
+    <button class="draw" id="draw">Draw</button>
+    <button class="sort" id="sort">Sort</button></div>
+ 
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-2">
+            <div class="card h-50">
+                <div class="card-body" id="card-body">
+                </div>
             </div>
         </div>
+    </div>
+
+
+
+
+       <script>
+    let arr = [5, 2, 9, 8, 4, 0, 1, 7, 3]   
+       
+       const bubbleSort = (arr) => {
+    let wall = arr.length - 1; //we start the wall at the end of the array
+    while (wall > 0){
+        let index = 0;
+        while (index < wall) {
+          //compare the adjacent positions, if the right one is bigger, we have to swap
+          if (arr[index] > arr[index + 1]) { 
+            let aux = arr[index]; 
+            arr[index] = arr[index + 1];
+            arr[index + 1] = aux;
+    
+        }
+    }
+            index++;
+    }
+            wall--; //decrease the wall for optimization
+    }
+	    return arr;
+     
+  };       bubbleSort(arr) {}
+       
+        
+       </script>
 
 
         <!-- do not remove this bundle.js tag -->
