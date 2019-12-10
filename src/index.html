@@ -32,10 +32,10 @@
 
 
 		<script>
-    function cardsSelection() {
 		    let suit = ["&hearts;" ,"&diams;","&spades;","&clubs;"]
-            let arr = [ ]   
+            let arr = ["A", 2,3,4,5,6,7,8,9,10,"J","Q","K"]   
             let log =[ ]
+    const cardsSelection =() =>{
         document.querySelector('#originalCards').innerHTML ="";
         document.querySelector('#sortedCards').innerHTML = "";
         document.querySelector('#howItWorks').innerHTML ="";
@@ -58,7 +58,7 @@
     }
 return arr
     }
-    cardsSelection ()  
+    cardsSelection =() =>{
 
 function sortedBubbles () {
   log = [];
@@ -67,10 +67,10 @@ function sortedBubbles () {
     do {
         swapped = false;
         for (var i = 0; i < cardArr.length - 1; i++) {
-            if (cardArr[i].number > cardArr[i + 1].number) {
-                var temp = cardArr[i];
-                cardArr[i] = cardArr[i + 1];
-                cardArr[i + 1] = temp;
+            if (arr[i].number > arr[i + 1].number) {
+                var aux = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = aux;
                 swapped = true;
                 log.push(cardArr.slice(0));
             }
@@ -90,36 +90,9 @@ function sortedBubbles () {
   }
 
 console.log (sortedBubbles())
-}
+}}
 sortedBubbles()
-
-    
-    
-    
-    
-    <!-- const bubbleSort = (arr) => {
-    let wall = arr.length - 1; //we start the wall at the end of the array
-        while (wall > 0){
-            let index = 0;
-        while (index < wall) {
-            //compare the adjacent positions, if the right one is bigger, we have to swap
-        if (arr[index] > arr[index + 1]) { 
-            let aux = arr[index]; 
-                arr[index] = arr[index + 1];
-                arr[index + 1] = aux;
-            }
-        }
-            index++;
-    }
-            wall--; //decrease the wall for optimization
-            return arr;
-};      
- bubbleSort(arr) {}
-         -->
-        
-		</script>
-
-
+</script>
 		<!-- do not remove this bundle.js tag -->
 		<script type="text/javascript" src="./bundle.js"></script>
 </body>
