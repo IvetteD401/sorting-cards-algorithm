@@ -39,9 +39,15 @@
         document.querySelector('#originalCards').innerHTML ="";
         document.querySelector('#sortedCards').innerHTML = "";
         document.querySelector('#howItWorks').innerHTML ="";
-        arr = [];
+        
             let inputVal = document.querySelector('#inputs').value;
+console.log(inputVal)
+
+            let random = Math.floor(Math.random() * suit.length);
+            let randomCard = Math.floor(Math.random() * arr.length);
+            let colorCard;
             let colorCardNumber = Math.floor(Math.random() * 2) + 1;
+               
                 switch(colorCardNumber) {
                 case 1:
                 colorCard="red"
@@ -50,17 +56,14 @@
                 colorCard="black"
                 break;
                 }  
-            let random = Math.floor(Math.random() * suit.length);
-            let randomCard = Math.floor(Math.random() * 14) +1;
-
-            arr.push({"suit": suit[random], "color": colorCard, "number": randomCard});
-            document.querySelector('#originalCards').innerHTML += `<div class="PlayingCard mt-3"><span class="topLeft${suit[random]} ${colorCard}"></span>  ${randomCard} <span class="bottomRight${suit[random]} ${colorCard}"></span></div>`;
+            let randomCardGenerator = `<div class="row"><div class= "col-2"><div class="card m-4" id="theCard" style="background-color:${colorCard}"> <p>suit: ${suit[random]}</p><p>number: ${arr[randomCard]}</p></div></div></div>`
+ 
+            log.push(randomCardGenerator);
+            document.querySelector('#originalCards').innerHTML += log;
     }
-return arr
-    }
-    cardsSelection =() =>{
+  cardsSelection =() =>{
 
-function sortedBubbles () {
+const sortedBubbles =()=> {
   log = [];
 
   var swapped;
@@ -89,7 +92,7 @@ function sortedBubbles () {
     }
   }
 
-console.log (sortedBubbles())
+console.log (sortedBubbles(arr))
 }}
 sortedBubbles()
 </script>
