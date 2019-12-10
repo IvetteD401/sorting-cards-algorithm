@@ -1,15 +1,21 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
 body {
-  background-image: url("https://www.istockphoto.com/photo/gambling-table-gm1073028250-287189794");
-  background-color: #cccccc;
-  height: 500px;
+  background-image: url("https://t3.ftcdn.net/jpg/02/90/29/94/240_F_290299466_TzsmyMhPZ3zgNbSMEjmmFuMgLTRyhlB0.jpg");
+
+  // Set a specific height
+  min-height: 500px;
+
+  //   Create the parallax scrolling effect
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
 }
 
+.container {
+  color: white;
+}
 /* 
     body{
         background: #BDBDBD;

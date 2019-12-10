@@ -1,57 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Vet's Amazing Card Sorting Machine</title>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-        <link rel="shortcut icon" href="./4geeks.ico"></head>
-    <body>
-    <div>
-    <input type="text" class="input" id="inputs">
-    <button class="draw" id="draw">Draw</button>
-    <button class="sort" id="sort">Sort</button></div>
- 
-    <div class="row row-cols-1 row-cols-md-3">
-        <div class="col mb-2">
-            <div class="card h-50">
-                <div class="card-body" id="card-body">
-                </div>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vet's Amazing Card Sorting Machine</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+		integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link rel="shortcut icon" href="./4geeks.ico">
+</head>
+
+<body>
+	<div class="container">
+		<h1> Sorting with bubbleSort</h1>
+		<div class="row">
+			<div class="col-2">
+				<input type="number" class="input" id="inputs">
             </div>
-        </div>
-    </div>
+				<div class="col-2">
+					<button class="draw" id="draw" onclick="cardsSelection()">Draw</button>
+				</div>
+				<div class="col-2">
+					<button class="sort" id="sort" onclick="sortedBubbles()">Sort</button></div>
+			</div>
+			<div class="unSortedCards" id="originalCards">jfnjhfbjv</div>
+			<div class="sortedCards" id="sortedCards">jfnjhfbjv</div>
+			<div class="howItWorks" id="howItWorks">jfnjhfbjv</div>
+		</div>
 
 
 
 
-       <script>
-    let arr = [5, 2, 9, 8, 4, 0, 1, 7, 3]   
-       
-       const bubbleSort = (arr) => {
-    let wall = arr.length - 1; //we start the wall at the end of the array
-    while (wall > 0){
-        let index = 0;
-        while (index < wall) {
-          //compare the adjacent positions, if the right one is bigger, we have to swap
-          if (arr[index] > arr[index + 1]) { 
-            let aux = arr[index]; 
-            arr[index] = arr[index + 1];
-            arr[index + 1] = aux;
-    
-        }
+		<script>
+    function cardsSelection() {
+		    let suit = ["&hearts;" ,"&diams;","&spades;","&clubs;"]
+            let arr = [ ]   
+            let log =[ ]
+        document.querySelector('#originalCards').innerHTML ="";
+        document.querySelector('#sortedCards').innerHTML = "";
+        document.querySelector('#howItWorks').innerHTML ="";
+        arr = [];
+            let inputVal = document.querySelector('#inputs').value;
+            let colorCardNumber = Math.floor(Math.random() * 2) + 1;
+                switch(colorCardNumber) {
+                case 1:
+                colorCard="red"
+                break;
+                case 2:
+                colorCard="black"
+                break;
+                }  
+            let random = Math.floor(Math.random() * suit.length);
+            let randomCard = Math.floor(Math.random() * 14) +1;
+
+            arr.push({"suit": suit[random], "color": colorCard, "number": randomCard});
+            document.querySelector('#originalCards').innerHTML += `<div class="PlayingCard mt-3"><span class="topLeft${suit[random]} ${colorCard}"></span>  ${randomCard} <span class="bottomRight${suit[random]} ${colorCard}"></span></div>`;
     }
+return arr
+    }
+    cardsSelection ()  
+
+function sortedBubbles () {
+  log = [];
+
+  var swapped;
+    do {
+        swapped = false;
+        for (var i = 0; i < cardArr.length - 1; i++) {
+            if (cardArr[i].number > cardArr[i + 1].number) {
+                var temp = cardArr[i];
+                cardArr[i] = cardArr[i + 1];
+                cardArr[i + 1] = temp;
+                swapped = true;
+                log.push(cardArr.slice(0));
+            }
+        }
+    } while (swapped);
+
+
+  for (num in cardArr) {
+    document.querySelector('#sortedCards').innerHTML += `<div class="PlayingCard mt-3"><span class="topLeft${cardArr[num].suit} ${cardArr[num].color}"></span> ${cardArr[num].number} <span class="bottomRight${cardArr[num].suit} ${cardArr[num].color}"></span></div>`;
+  }
+
+  for (swap in log) {
+    document.querySelector('#howItWorks').innerHTML += '<br>';
+    for (card in log[swap]) {
+      document.querySelector('#howItWorks').innerHTML += `<div class=" mt-3"><span class="topLeft${log[swap][card].suit} ${log[swap][card].color}"></span> ${log[swap][card].number} <span class="bottomRight${log[swap][card].suit} ${log[swap][card].color}"></span></div>`;
+    }
+  }
+
+console.log (sortedBubbles())
+}
+sortedBubbles()
+
+    
+    
+    
+    
+    <!-- const bubbleSort = (arr) => {
+    let wall = arr.length - 1; //we start the wall at the end of the array
+        while (wall > 0){
+            let index = 0;
+        while (index < wall) {
+            //compare the adjacent positions, if the right one is bigger, we have to swap
+        if (arr[index] > arr[index + 1]) { 
+            let aux = arr[index]; 
+                arr[index] = arr[index + 1];
+                arr[index + 1] = aux;
+            }
+        }
             index++;
     }
             wall--; //decrease the wall for optimization
-    }
-	    return arr;
-     
-  };       bubbleSort(arr) {}
-       
+            return arr;
+};      
+ bubbleSort(arr) {}
+         -->
         
-       </script>
+		</script>
 
 
-        <!-- do not remove this bundle.js tag -->
-        <script type="text/javascript" src="./bundle.js"></script></body>
+		<!-- do not remove this bundle.js tag -->
+		<script type="text/javascript" src="./bundle.js"></script>
+</body>
+
 </html>
