@@ -12,6 +12,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.flipper {
+  transform: scale(1, -1);
+}
 
 .container {
   color: white;

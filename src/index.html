@@ -32,22 +32,21 @@
 
 
 		<script>
-		    let suit = ["&hearts;" ,"&diams;","&spades;","&clubs;"]
-            let arr = ["A", 2,3,4,5,6,7,8,9,10,"J","Q","K"]   
             let log =[ ]
     const cardsSelection =() =>{
-        document.querySelector('#originalCards').innerHTML ="";
-        document.querySelector('#sortedCards').innerHTML = "";
-        document.querySelector('#howItWorks').innerHTML ="";
-        
+        log =[ ]
+		    let suit = ["&hearts;" ,"&diams;","&spades;","&clubs;"];
+            let arr = ["A", 2,3,4,5,6,7,8,9,10,"J","Q","K"];   
             let inputVal = document.querySelector('#inputs').value;
-console.log(inputVal)
-
             let random = Math.floor(Math.random() * suit.length);
             let randomCard = Math.floor(Math.random() * arr.length);
             let colorCard;
             let colorCardNumber = Math.floor(Math.random() * 2) + 1;
-               
+        
+        document.querySelector('#originalCards').innerHTML ="";
+        document.querySelector('#sortedCards').innerHTML = "";
+        document.querySelector('#howItWorks').innerHTML ="";
+                       
                 switch(colorCardNumber) {
                 case 1:
                 colorCard="red"
@@ -56,12 +55,17 @@ console.log(inputVal)
                 colorCard="black"
                 break;
                 }  
-            let randomCardGenerator = `<div class="row"><div class= "col-2"><div class="card m-4" id="theCard" style="background-color:${colorCard}"> <p>suit: ${suit[random]}</p><p>number: ${arr[randomCard]}</p></div></div></div>`
+
+            let randomCardGenerator = `<div class="row"><div class= "col-2"><div class="card m-4" id="theCard" style="color:${colorCard}"> <p>${suit[random]}</p><p>${arr[randomCard]}</p><p>${suit[random]}</div></div></div>`
  
+                for (i=0;i<inputVal; i++){
             log.push(randomCardGenerator);
-            document.querySelector('#originalCards').innerHTML += log;
+            document.querySelector('#originalCards').innerHTML = log 
+                }
     }
+    
   cardsSelection =() =>{
+      log =[ ]
 
 const sortedBubbles =()=> {
   log = [];
